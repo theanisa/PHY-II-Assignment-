@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <math.h>
+
+// Define the value of pi
+#define PI 3.141592653589793
+
+// Define a function that calculates the wavelength from the given parameters
+double wavelength(double m, double theta, double d) {
+  // Convert theta from degrees to radians
+  theta = theta * PI / 180.0;
+  // Use the formula d sin(theta) = m lambda
+  return d * sin(theta) / m;
+}
+
+// Define a function that returns the color of light from the given wavelength
+char* color(double lambda) {
+  // Use the approximate ranges of wavelengths for different colors of visible light
+  if (lambda >= 380 && lambda < 450) {
+    return "violet";
+  }
+  else if (lambda >= 450 && lambda < 495) {
+    return "blue";
+  }
+  else if (lambda >= 495 && lambda < 570) {
+    return "green";
+  }
+  else if (lambda >= 570 && lambda < 590) {
+    return "yellow";
+  }
+  else if (lambda >= 590 && lambda < 620) {
+    return "orange";
+  }
+  else if (lambda >= 620 && lambda < 750) {
+    return "red";
+  }
+  else {
+    return "not visible";
+  }
+}
+
+int main() {
+  // Declare variables to store the input parameters
+  double m, theta, d;
+  // Prompt the user to enter the values of m, theta, and d
+  printf("Enter the order of the bright fringe (m): ");
+  scanf("%lf", &m);
+  printf("Enter the angle of the bright fringe (theta) in degrees: ");
+  scanf("%lf", &theta);
+  printf("Enter the distance between the slits (d) in meters: ");
+  scanf("%lf", &d);
+  // Call the wavelength function to calculate the wavelength
+  double lambda = wavelength(m, theta, d);
+  // Call the color function to get the color of light
+  char* c = color(lambda);
+  // Print the output
+  printf("The wavelength of light is %.2e meters\n", lambda);
+  printf("The color of light is %s\n", c);
+  // Return 0 to indicate successful execution
+  return 0;
+}
