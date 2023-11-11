@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <math.h>
+#define PI 3.141592653589793
+double angle(double m, double lambda, double d) {
+  return asin(m * lambda / d) * 180.0 / PI;
+}
+
+int main() {
+  double m3 = 3; // The order of the bright spot for green light
+  double lambda3 = 530e-9; 
+  double theta3 = 65.0;
+  double m2 = 2;
+  double lambda2 = 700e-9; 
+  double theta2;
+  double d;
+  theta3 = theta3 * PI / 180.0;
+  d = m3 * lambda3 / sin(theta3);
+  theta2 = angle(m2, lambda2, d);
+  printf("The angle of the second order bright spot for red light is %.2f degrees\n", theta2);
+  return 0;
+}
