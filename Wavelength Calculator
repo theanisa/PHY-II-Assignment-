@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <math.h>
 #define PI 3.141592653589793
@@ -33,11 +34,13 @@ int main() {
   scanf("%lf", &m);
   printf("Enter the angle of the bright fringe (theta) in degrees: ");
   scanf("%lf", &theta);
-  printf("Enter the distance between the slits (d) in meters: ");
+  printf("Enter the distance between the slits (d) in micrometers: ");
   scanf("%lf", &d);
+  d = d * 1e-6;
   double lambda = wavelength(m, theta, d);
+  lambda = lambda * 1e9;
   char* c = color(lambda);
-  printf("The wavelength of light is %.2e meters\n", lambda);
+  printf("The wavelength of light is %.2f nanometers\n", lambda);
   printf("The color of light is %s\n", c);
   return 0;
 }
